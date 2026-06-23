@@ -1,0 +1,39 @@
+# gitignore for laptop-setup
+# This repo contains SCRIPTS ONLY — no configs, no secrets.
+
+# ── Any local backup/staging dirs ─────────────────────────────────────────────
+backup/
+*.zip
+
+# ── Shell config (may contain secrets) ───────────────────────────────────────
+.zshrc
+.zshenv
+.zprofile
+.bashrc
+.bash_profile
+
+# ── Credential/secret files ────────────────────────────────────────────────────
+*.pem
+*.key
+id_*
+*.json.key
+.env
+.env.*
+*.env
+env.sh
+secrets/env.sh
+kubeconfig
+
+# ── OS artifacts ──────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# ── Editor artifacts ──────────────────────────────────────────────────────────
+*.swp
+*.swo
+*~
+.idea/
