@@ -35,16 +35,20 @@ step "Homebrew"
 if ! command -v brew &>/dev/null; then
   log "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  if [ -f /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [ -f /usr/local/bin/brew ]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
 fi
 log "Installing packages from Brewfile..."
-brew bundle install --file="$PACKAGES/Brewfile" --no-lock
+brew bundle install --file="$PACKAGES/Brewfile"
 
 # ── Oh My Zsh ─────────────────────────────────────────────────────────────────
 step "Oh My Zsh"
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   log "Installing Oh My Zsh..."
-  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
 # ── Git ───────────────────────────────────────────────────────────────────────
