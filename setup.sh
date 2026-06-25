@@ -100,7 +100,7 @@ cp "$CONFIGS/opencode/opencode.json" ~/.config/opencode/opencode.json
 step "SSH"
 mkdir -p ~/.ssh && chmod 700 ~/.ssh
 [ -f "$CONFIGS/ssh/config" ] && cp "$CONFIGS/ssh/config" ~/.ssh/config && chmod 600 ~/.ssh/config
-for key in "$CONFIGS"/ssh/id_* "$CONFIGS"/ssh/bastion_key "$CONFIGS"/ssh/*.pem 2>/dev/null; do
+for key in "$CONFIGS"/ssh/id_* "$CONFIGS"/ssh/bastion_key "$CONFIGS"/ssh/*.pem; do
   [ -f "$key" ] && cp "$key" ~/.ssh/ && chmod 600 ~/.ssh/$(basename "$key")
 done
 
