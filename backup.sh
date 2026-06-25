@@ -83,7 +83,7 @@ cp ~/.config/opencode/opencode.json "$STAGING/configs/opencode/opencode.json"
 log "SSH config + keys..."
 [ -f ~/.ssh/config ] && cp ~/.ssh/config "$STAGING/configs/ssh/config"
 for key in ~/.ssh/id_* ~/.ssh/bastion_key ~/.ssh/*.pem; do
-  [ -f "$key" ] && cp "$key" "$STAGING/configs/ssh/" && chmod 600 "$STAGING/configs/ssh/$(basename $key)"
+  [ -f "$key" ] && cp "$key" "$STAGING/configs/ssh/" && chmod 600 "$STAGING/configs/ssh/$(basename "$key")"
 done
 
 # ── GCP service account keys ──────────────────────────────────────────────────
